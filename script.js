@@ -1,22 +1,24 @@
 const userContainer = document.getElementById("user");
 
 const getUser = () => {
-  return fetch("https://randomuser.me/api/").then((res) => res.json());
+    return fetch("https://randomuser.me/api/").then((res) => res.json());
 };
 
 const renderLoading = () => {
-  userContainer.innerHTML = "Loading...";
+    userContainer.innerHTML = "Loading...";
 };
 
 const renderError = () => {
-  userContainer.innerHTML = "Error...";
+    userContainer.innerHTML = "Error...";
 };
 
 const renderUser = (user) => {
-  const { title, first, last } = user.name;
-  const { phone, email, picture, gender } = user;
+    const { title, first, last } = user.name;
+    const { phone, email, picture, gender } = user;
 
-  userContainer.innerHTML = `
+    const fullName = `${title} ${first} ${last}`;
+
+    userContainer.innerHTML = `
         <h4>${fullName}</h4>
         <p>
             <img alt="${title} ${first} ${last} avatar" src="${picture.large}"/>
@@ -31,13 +33,13 @@ const renderUser = (user) => {
 };
 
 (async () => {
-  try {
-    renderLoading();
+    try {
+        renderLoading();
 
-    const {
-      results: [user],
-    } = await getUser();
+        const {
+            results: [user],
+        } = await getUser();
 
-    renderUser(user);
-  } catch (err) {}
+        renderUser(user);
+    } catch (err) { }
 })();
