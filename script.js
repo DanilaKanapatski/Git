@@ -17,7 +17,7 @@ const renderUser = (user) => {
   const { phone, email, picture, gender } = user;
 
   userContainer.innerHTML = `
-        <h4>${title} ${first} ${last}</h4>
+        <h4>${fullName}</h4>
         <p>
             <img alt="${title} ${first} ${last} avatar" src="${picture.large}"/>
             <br/>
