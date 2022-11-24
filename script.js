@@ -16,10 +16,12 @@ const renderUser = (user) => {
     const { title, first, last } = user.name;
     const { phone, email, picture, gender } = user;
 
+    const fullName = `${title} ${first} ${last}`;
+
     userContainer.innerHTML = `
-            <h4>${title} ${first} ${last}</h4>
+            <h4>${fullName}</h4>
             <p>
-                <img alt="${title} ${first} ${last} avatar" src="${picture.large}"/>
+                <img alt="${fullName} avatar" src="${picture.large}"/>
                 <br/>
                 <strong>Gender:</strong> ${gender}
                 <br/>
